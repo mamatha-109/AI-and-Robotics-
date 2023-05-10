@@ -1,0 +1,67 @@
+#include <Servo.h>
+
+// Define the servo motor pins
+const int basePin = 2;
+const int shoulderPin = 3;
+const int elbowPin = 4;
+const int wristPin = 5;
+
+// Define the servo motor objects
+Servo base;
+Servo shoulder;
+Servo elbow;
+Servo wrist;
+
+// Define the initial servo motor angles
+int baseAngle = 90;
+int shoulderAngle = 90;
+int elbowAngle = 90;
+int wristAngle = 90;
+
+void setup() {
+  // Attach the servo motors to the pins
+  base.attach(basePin);
+  shoulder.attach(shoulderPin);
+  elbow.attach(elbowPin);
+  wrist.attach(wristPin);
+  
+  // Set the initial servo motor angles
+  base.write(baseAngle);
+  shoulder.write(shoulderAngle);
+  elbow.write(elbowAngle);
+  wrist.write(wristAngle);
+}
+
+void loop() {
+  // Move the base servo motor
+  baseAngle += 1;
+  if (baseAngle > 180) {
+    baseAngle = 0;
+  }
+  base.write(baseAngle);
+  delay(10);
+  
+  // Move the shoulder servo motor
+  shoulderAngle += 1;
+  if (shoulderAngle > 180) {
+    shoulderAngle = 0;
+  }
+  shoulder.write(shoulderAngle);
+  delay(10);
+  
+  // Move the elbow servo motor
+  elbowAngle += 1;
+  if (elbowAngle > 180) {
+    elbowAngle = 0;
+  }
+  elbow.write(elbowAngle);
+  delay(10);
+  
+  // Move the wrist servo motor
+  wristAngle += 1;
+  if (wristAngle > 180) {
+    wristAngle = 0;
+  }
+  wrist.write(wristAngle);
+  delay(10);
+}
