@@ -1,0 +1,71 @@
+#include <IRremote.h>
+
+// Replace with your IR sensor pin number
+const int irPin = 3;
+
+// Define the IR sensor object
+IRrecv irrecv(irPin);
+decode_results results;
+
+// Define the motor pins
+const int leftMotor1 = 5;
+const int leftMotor2 = 6;
+const int rightMotor1 = 9;
+const int rightMotor2 = 10;
+
+// Define the motor speed
+const int motorSpeed = 200;
+
+void setup() {
+  // Initialize the serial communication, IR sensor, and motor pins
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  pinMode(leftMotor1, OUTPUT);
+  pinMode(leftMotor2, OUTPUT);
+  pinMode(rightMotor1, OUTPUT);
+  pinMode(rightMotor2, OUTPUT);
+}
+
+void loop() {
+  // Check for incoming IR signals
+  if (irrecv.decode(&results)) {
+    // Print the received signal
+    Serial.print("IR signal received: ");
+    Serial.println(results.value, HEX);
+    irrecv.resume();
+    
+    // Move the robot based on the IR signal
+    switch (results.value) {
+      case 0xFF6897: // Forward
+        digitalWrite(leftMotor1, HIGH);
+        digitalWrite(leftMotor2, LOW);
+        digitalWrite(rightMotor1, HIGH);
+        digitalWrite(rightMotor2, LOW);
+        analogWrite(leftMotor1, motorSpeed);
+        analogWrite(rightMotor1, motorSpeed);
+        break;
+      case 0xFF9867: // Left
+        digitalWrite(leftMotor1, LOW);
+        digitalWrite(leftMotor2, HIGH);
+        digitalWrite(rightMotor1, HIGH);
+        digitalWrite(rightMotor2, LOW);
+        analogWrite(leftMotor2, motorSpeed);
+        analogWrite(rightMotor1, motorSpeed);
+        break;
+      case 0xFF30CF: // Right
+        digitalWrite(leftMotor1, HIGH);
+        digitalWrite(leftMotor2, LOW);
+        digitalWrite(rightMotor1, LOW);
+        digitalWrite(rightMotor2, HIGH);
+        analogWrite(leftMotor1, motorSpeed);
+        analogWrite(rightMotor2, motorSpeed);
+        break;
+      case 0xFF18E7: // Stop
+        digitalWrite(leftMotor1, LOW);
+        digitalWrite(leftMotor2, LOW);
+        digitalWrite(rightMotor1, LOW);
+        digitalWrite(rightMotor2, LOW);
+        break;
+    }
+  }
+}
