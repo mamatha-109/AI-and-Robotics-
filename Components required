@@ -1,0 +1,36 @@
+Arduino Uno
+IR Sensor Module
+L293D Motor Driver IC
+Robotic Platform / Chassis
+Breadboard / PCB 
+Castor Wheel
+Wheels
+12V Battery
+9V Battery
+connecting wires
+NRF24L01 
+MPU6050DC Motor 
+L293D Motor Driver Module
+NodeMCU or "ESP8266"
+PIR motion sensor HC-sr501
+Jumper wires
+The 433MHz OR the 315MHz module (both work the same way) Tx and Rx pair 
+Push button switches X 5 (Again not needed if you're using a computer to control the bot).
+The Rx part of theTx/Rx pair
+100uF Electrolytic Caps X 4.
+L293D motor driver chip X 2 (Each chip controls 2 motors bi-directionally...So if you want to make a 2 wheeled bot you will require only 1 L293D chip).
+0.1uF ceramic caps X 12 (3 for each motor)....for eliminating noise between the controller and motors.
+Robotic arm kit(which includes 4 geared motors, 4 wheels with track belts and arm gripper)
+Arduino Uno R3 board 
+HC05 or HC06 Bluetooth module
+12V Battery
+Android Smartphone or Tablet
+12v DC motors 
+Motor Driver (L298N)
+Distance Sensor (Ultra Sonic)
+Wires (Jumper wires 1-pin male-male)
+Battery Charger
+Acrylic sheet
+Soldering Iron
+Wire cutter (optional)
+Nylon Zip Wrap
